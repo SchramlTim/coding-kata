@@ -1,17 +1,13 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import TodoList from "./components/TodoList";
-import { changeToDarkmodeAfter30Seconds } from "./examples";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import DarkModeToggle from "./components/DarkModeToggle";
+import { useDarkModeStore } from "./store/darkModeStore";
+import Calendar from "./components/Calendar";
 
 const App: FC = () => {
-  // example js call
-  useEffect(() => {
-    // changeToDarkmodeAfter30Seconds();
-  });
-  //TODO: This state should be updated dynamically with the toggle
-  const darkMode = false;
+  const darkMode = useDarkModeStore((state) => state.darkMode);
   return (
     <Router>
       <div
@@ -26,7 +22,7 @@ const App: FC = () => {
         <Navbar />
         <Routes>
           <Route path="/todo" element={<TodoList />} />
-          {/* <Route path="/calendar" element={<Calendar />} /> */}
+          <Route path="/calendar" element={<Calendar />} />
         </Routes>
       </div>
     </Router>

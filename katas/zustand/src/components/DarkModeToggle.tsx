@@ -1,10 +1,10 @@
 // DarkModeToggle.tsx
 import React from "react";
+import { useDarkModeStore } from "../store/darkModeStore";
 
 const DarkModeToggle: React.FC = () => {
-  //TODO: This state should be updated dynamically with the toggle
-  const darkMode = false;
-  const toggleDarkMode = () => {}
+const darkMode = useDarkModeStore((state) => state.darkMode);
+const toggleDarkMode = useDarkModeStore((state) => state.toggleDarkMode);
 
   return (
     <div className={`p-4 ${darkMode ? " text-white" : "text-gray-800"}`}>

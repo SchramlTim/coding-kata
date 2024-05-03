@@ -1,10 +1,10 @@
 // Navbar.tsx
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDarkModeStore } from "../store/darkModeStore";
 
 const Navbar: React.FC = () => {
-  //TODO: This state should be updated dynamically with the toggle
-  const darkMode = false;
+  const darkMode = useDarkModeStore((state) => state.darkMode);
 
   return (
     <nav className="mb-4">

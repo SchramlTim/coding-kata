@@ -8,18 +8,18 @@ import { CalendarState } from "../types/calendarTypes";
  * 2. Test the integration in the Calendar component
  */
 
+
 export const useCalendarStore = create<CalendarState>((set) => ({
   month: new Date().getMonth(),
   year: new Date().getFullYear(),
-
   nextMonth: () =>
-    set((state) => {
-      // update this function to return the new date that will show the next month
-      return { month: state.month, year: state.year };
-    }),
+      set((state) => {
+          const newDate = new Date(state.year, state.month + 1);
+          return { month: newDate.getMonth(), year: newDate.getFullYear() };
+      }),
   prevMonth: () =>
-    set((state) => {
-      // update this function to return the new date that will show the previous month
-      return { month: state.month, year: state.year };
-    }),
+      set((state) => {
+          const newDate = new Date(state.year, state.month - 1);
+          return { month: newDate.getMonth(), year: newDate.getFullYear() };
+      }),
 }));

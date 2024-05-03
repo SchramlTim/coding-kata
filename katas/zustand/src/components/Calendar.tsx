@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import { useCalendarStore } from '../store/calendarStore';
+import { useDarkModeStore } from '../store/darkModeStore';
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 const Calendar: FC = () => {
     const { month, year, nextMonth, prevMonth } = useCalendarStore();
-    //TODO: This state should be updated dynamically with the toggle
-    const darkMode = false
+    const darkMode = useDarkModeStore((state) => state.darkMode);
 
     // Function to compute the days of the calendar
     const getCalendarDays = () => {
